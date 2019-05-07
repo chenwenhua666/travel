@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day7 velocity.js</title>
+    <script src="vue.js"></script>
+    <script src="velocity.js"></script>
+    <link rel="stylesheet" type="text/css" href="animate.css">
+</head>
+<body>
+    <div id="app">
+        <transition name="fade"
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+        >
+            <div v-if="show">hello</div>
+        </transition>
+        <button @click="handleClick">click</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data : {
+                show:true
+            },
+            methods: {
+                handleClick: function () {
+                    this.show = !this.show
+                },
+                beforeEnter : function (el) {
+                    el.style.opacity = 0
+                },
+                enter : function (el, done) {
+                    Velocity(el,{opacity:1},{duration:1000,complete:done})
+                },
+                afterEnter:function (el) {
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

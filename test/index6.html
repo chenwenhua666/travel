@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day3</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <counter ref="one" @change="handleChange"></counter>
+        <counter ref="two" @change="handleChange"></counter>
+        <div>{{total}}</div>
+    </div>
+
+    <script>
+        Vue.component('counter',{
+            data:function () {
+                return {
+                    number:0
+                }
+            },
+            template:"<div @click=\"handleCount\">{{number}}</div>",
+            methods:{
+                handleCount:function () {
+                    this.number ++;
+                    this.$emit("change")
+                }
+            }
+        });
+        let vm = new Vue({
+            el: "#app",
+            data:{
+              total:0
+            },
+            methods:{
+                handleChange:function () {
+                    this.total = this.$refs.one.number + this.$refs.two.number
+                }
+            }
+        })
+    </script>
+</body>
+</html>

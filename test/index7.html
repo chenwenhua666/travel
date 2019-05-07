@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day3</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <counter :count="1" @change="increase"></counter>
+        <counter :count="2" @change="increase"></counter>
+        <div>{{total}}</div>
+    </div>
+
+    <script>
+        var counter = {
+            props:['count'],
+            template:'<div @click="handleClick">{{number}}</div>',
+            data:function (){
+                return {
+                    number:this.count
+                }
+            },
+            methods:{
+                handleClick:function () {
+                    this.number = this.number +2;
+                    this.$emit("change",2)
+                }
+            },
+        }
+
+        let vm = new Vue({
+            el: "#app",
+            components:{
+              counter:counter
+            },
+            data:{
+                total:3
+            },
+            methods:{
+                increase :function (value) {
+                    this.total += value;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

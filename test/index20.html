@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day7动画封装</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <crystal :show="show">
+            <div v-if="show">hello</div>
+        </crystal>
+        <button @click="handleClick">click</button>
+    </div>
+
+    <script>
+        Vue.component('crystal',{
+            props:['show'],
+            template:`
+                <transition @before-enter="beforeEnter" @enter="enter">
+                    <slot v-if="show"></slot>
+                </transition>
+            `,
+            methods:{
+                beforeEnter :function (el) {
+                    el.style.color='red'
+                },
+                enter: function (el, done) {
+                    setTimeout(() => {
+                        el.style.color='green'
+                         done()
+                    },2000)
+
+                }
+            }
+        })
+        var vm = new Vue({
+            el: "#app",
+            data : {
+                show:true
+            },
+            methods: {
+                handleClick: function () {
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
+</body>
+</html>

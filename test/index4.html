@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day2</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+       <!-- <template  v-for="(item,index) of list" :key="item.id">
+            <div>
+                {{item.text}}-&#45;&#45;
+            </div>
+            <span> {{item.text}}</span>
+        </template>-->
+        <div v-for="(item,key,index) of userInfo" >
+            {{item}}--{{key}}--{{index}}
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data : {
+                // Vue.set(vm.list,0,{})
+                // vm.$set(vm.list,1,{})
+               /*list:[
+                   {
+                       id:"001",
+                       text:"aaa"
+                   },
+                   {
+                       id: "002",
+                       text: "bbb"
+                   },
+                   {
+                       id:"003",
+                       text:"ccc"
+                   },
+                   {
+                       id:"004",
+                       text:"ddd"
+                   },
+               ]*/
+               // Vue.set(vm.userInfo,{})
+                // vm.$set(vm.userInfo,{})
+               userInfo:{
+                   name:"cwh",
+                   age:28,
+                   email:"764471698@qq.com"
+               }
+            }
+        })
+    </script>
+</body>
+</html>

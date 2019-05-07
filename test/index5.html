@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day3</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <table>
+            <tbody>
+               <tr is="row"></tr>
+               <tr is="row"></tr>
+               <tr is="row"></tr>
+            </tbody>
+        </table>
+
+        <div ref="cry" @click="handleClick">
+            clicked
+        </div>
+    </div>
+
+    <script>
+        Vue.component('row',{
+            data:function () {
+                return {
+                    content:"row line"
+                }
+            },
+            template:"<tr><td>{{content}}</td></tr>"
+        });
+        let vm = new Vue({
+            el: "#app",
+            methods:{
+                handleClick:function () {
+                    alert(this.$refs.cry.innerHTML);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
