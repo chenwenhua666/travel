@@ -3,7 +3,7 @@
     <detail-banner
       :sightName="sightName"
       :bannerImg="bannerImg"
-      :bannerImgs="gallaryImgs"
+      :bannerImgs="galleryImgs"
     ></detail-banner>
     <detail-header></detail-header>
     <div class="content">
@@ -28,7 +28,7 @@ export default {
     return {
       sightName: '',
       bannerImg: '',
-      gallaryImgs: [],
+      galleryImgs: [],
       list: []
     }
   },
